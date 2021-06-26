@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/js/jquery.dataTables.min.js" integrity="sha512-BkpSL20WETFylMrcirBahHfSnY++H2O1W+UnEEO4yNIl+jI2+zowyoGJpbtk6bx97fBXf++WJHSSK2MV4ghPcg==" crossorigin="anonymous"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('#korisnici').DataTable();
+            });
+        </script>
+
+        <title>Pregled korisnika</title>
+    </h:head>
+    <h:body>
+        <h1>Pregled korisnika</h1>
+        <h:form>
+            <h:commandLink value="Izbornik" action="izbornik"/>
+            <br/><br/>
+            <h:commandLink value="Odjava korisnika" action="#{odjava.odjaviKorisnika}"/>
+        </h:form>
+
+        <h2>Korisnici</h2>
+        
+        <h:dataTable id="korisnici" class="display" var="k" value="#{pregledKorisnika.sviKorisnici}">
+            <h:column>
+                <f:facet name="header">Korisničko ime</f:facet>
+                    #{k.korisnik}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Ime</f:facet>
+                    #{k.ime}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Prezime</f:facet>
+                    #{k.prezime}
+            </h:column>
+        </h:dataTable>
+
+    </h:body>
+</html>
+

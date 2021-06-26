@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+
+-->
+<faces-config version="2.3"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>prijavaKorisnika</from-action>
+            <to-view-id>/prijavaKorisnika.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/prijavaKorisnika.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>izbornik</from-outcome>
+            <from-action>#{prijava.prijaviKorisnika}</from-action>
+            <to-view-id>/izbornik.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <from-action>#{prijava.prijaviKorisnika}</from-action>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/izbornik.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>pregledAerodroma</from-outcome>
+            <from-action>#{pregledAerodroma.autoriziraj}</from-action>
+            <to-view-id>/pregledAerodroma.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>obavijest</from-outcome>
+            <from-action>#{pregledAerodroma.autoriziraj}</from-action>
+            <to-view-id>/obavijest.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>prijavaKorisnika</from-outcome>
+            <from-action>#{odjava.odjaviKorisnika}</from-action>
+            <to-view-id>/prijavaKorisnika.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>pregledKorisnika</from-outcome>
+            <from-action>#{pregledKorisnika.autoriziraj}</from-action>
+            <to-view-id>/pregledKorisnika.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>obavijest</from-outcome>
+            <from-action>#{pregledKorisnika.autoriziraj}</from-action>
+            <to-view-id>/obavijest.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/pregledKorisnika.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>izbornik</from-action>
+            <to-view-id>/izbornik.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>obavijest</from-outcome>
+            <from-action>#{pregledKorisnika.prikaziKorisnike}</from-action>
+            <to-view-id>/obavijest.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/pregledAerodroma.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>izbornik</from-action>
+            <to-view-id>/izbornik.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>obavijest</from-outcome>
+            <from-action>#{pregledAerodroma.prikaziAerodrome}</from-action>
+            <to-view-id>/obavijest.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>error</from-outcome>
+            <to-view-id>/error.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/error.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>pocetna</from-action>
+            <to-view-id>/index.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/obavijest.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>izbornik</from-action>
+            <to-view-id>/izbornik.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

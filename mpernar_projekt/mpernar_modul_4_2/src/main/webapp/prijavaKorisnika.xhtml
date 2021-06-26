@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Prijava korisnika</title>
+    </h:head>
+    <h:body>
+        <h1>Prijava korisnika</h1>
+        <h:form>
+            <h:outputLabel value="Korisnicko ime: " />
+            <h:inputText id="korisnickoIme" value="#{prijava.korisnickoIme}" />
+            <br/><br/>
+            <h:outputLabel value="Lozinka: " />
+            <h:inputSecret id="loznika" value="#{prijava.lozinka}" />
+            <br/><br/>
+            <h:commandButton value="Prijavi se" 
+                             action="#{prijava.prijavaKorisnika}" >
+            </h:commandButton>
+        </h:form>
+
+    </h:body>
+</html>
+

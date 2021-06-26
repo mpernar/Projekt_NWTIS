@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pregled aerodroma</title>
+    </h:head>
+    <h:body>
+        <h1>Pregled aerodroma</h1>
+        <h:form>
+            <h:commandLink value="Izbornik" action="izbornik"/>
+            <br/><br/>
+            <h:commandLink value="Odjava korisnika" action="#{odjava.odjaviKorisnika}"/>
+            <br/><br/>
+            <h:outputLabel value="Datum: " />
+            <h:inputText id="datum" value="#{pregledAerodroma.datum}" />
+            &nbsp;
+            <h:outputLabel value="Vrijeme: " />
+            <h:inputText id="vrijeme" value="#{pregledAerodroma.vrijeme}" />
+            &nbsp;
+            <h:commandButton id="dohvati" value="Dohvati podatke" 
+                             action="#{pregledAerodroma.dohvatiPodatke}" >
+                <f:ajax execute="aerodrom datum vrijeme" render="letovi meteoPodaci temperatura vlaga tlak brzinaVjetra smjerVjetra" />
+            </h:commandButton>
+
+            <h2>Aerodromi</h2>
+
+            <h:selectOneMenu id="aerodrom" value="#{pregledAerodroma.odabraniAerodrom}">
+                <f:selectItems value="#{pregledAerodroma.mojiAerodromi}" 
+                               var="a"
+                               itemLabel="#{a.icao}"
+                               itemValue="#{a.icao}" />
+            </h:selectOneMenu>
+
+        </h:form>
+
+        <h2>Letovi aerodroma na dan</h2>
+
+        <h:dataTable id="letovi" border="1" var="l" value="#{pregledAerodroma.letoviAviona}">
+            <h:column>
+                <f:facet name="header">firstSeen</f:facet>
+                <h:outputText value="#{l.firstSeen * 1000}">
+                    <f:convertDateTime type="both" locale="hr" dateStyle="medium" timeStyle="medium" timeZone="GMT+1"/> 
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">estDepartureAirport</f:facet>
+                    #{l.estDepartureAirport}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estArrivalAirport</f:facet>
+                    #{l.estArrivalAirport}
+            </h:column>
+            <h:column>
+                <f:facet name="header">lastSeen</f:facet>
+                <h:outputText value="#{l.lastSeen * 1000}">
+                    <f:convertDateTime type="both" locale="hr" dateStyle="medium" timeStyle="medium" timeZone="GMT+1"/> 
+                </h:outputText>
+            </h:column>
+            <h:column>
+                <f:facet name="header">callsign</f:facet>
+                    #{l.callsign}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estDepartureAirportHorizDist</f:facet>
+                    #{l.estDepartureAirportHorizDistance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estDepartureAirportVertDist</f:facet>
+                    #{l.estDepartureAirportVertDistance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estArrivalAirportHorizDist</f:facet>
+                    #{l.estArrivalAirportHorizDistance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">estArrivalAirportVertDist</f:facet>
+                    #{l.estArrivalAirportVertDistance}
+            </h:column>
+            <h:column>
+                <f:facet name="header">departureAirportCandidatesCount</f:facet>
+                    #{l.departureAirportCandidatesCount}
+            </h:column>
+            <h:column>
+                <f:facet name="header">arrivalAirportCandidatesCount</f:facet>
+                    #{l.arrivalAirportCandidatesCount}
+            </h:column>
+        </h:dataTable>
+
+
+        <h2>Meteo podaci aerodroma na dan</h2>
+
+        <h:dataTable id="meteoPodaci" border="1" var="m" value="#{pregledAerodroma.meteoPodaci}">
+            <h:column>
+                <f:facet name="header">Temperatura</f:facet>
+                    #{m.mainTemp}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Tlak</f:facet>
+                    #{m.mainPressure}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Vlaga</f:facet>
+                    #{m.mainHumidity}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Smjer vjetra</f:facet>
+                    #{m.windDeg}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Brzina vjetra</f:facet>
+                    #{m.windSpeed}
+            </h:column>
+        </h:dataTable>
+
+        <h2>Meteo podaci aerodroma u odredeno vrijeme</h2>
+
+        <h:outputLabel value="Temperatura (°C): " />
+        <h:outputText id="temperatura" value="#{pregledAerodroma.temperatura}" />
+        <br/>
+        <h:outputLabel value="Vlaga (%): " />
+        <h:outputText id="vlaga" value="#{pregledAerodroma.vlaga}" />
+        <br/>
+        <h:outputLabel value="Tlak (hPa): " />
+        <h:outputText id="tlak" value="#{pregledAerodroma.tlak}" />
+        <br/>
+        <h:outputLabel value="Brzina vjetra (km/h): " />
+        <h:outputText id="brzinaVjetra" value="#{pregledAerodroma.brzinaVjetra}" />
+        <br/>
+        <h:outputLabel value="Smjer vjetra (°): " />
+        <h:outputText id="smjerVjetra" value="#{pregledAerodroma.smjerVjetra}" />
+        <br/>
+    </h:body>
+</html>
+

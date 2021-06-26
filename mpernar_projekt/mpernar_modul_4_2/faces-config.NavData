@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scene Scope="Project" version="2">
+    <Scope Scope="Faces Configuration Only"/>
+    <Scope Scope="Project">
+        <Node id="izbornik.xhtml" x="1090" y="435" zoom="true"/>
+        <Node id="error.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="index.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="pregledAerodroma.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="prijavaKorisnika.xhtml" x="656" y="32" zoom="true"/>
+        <Node id="pregledKorisnika.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="obavijest.xhtml" x="577" y="458" zoom="true"/>
+    </Scope>
+    <Scope Scope="All Faces Configurations"/>
+</Scene>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>NWTIS konfiguracija</comment>
+<entry key="server.database">jdbc:mysql://localhost/</entry>
+<entry key="admin.username">nwtis_mpernar</entry>
+<entry key="admin.password">mpernar_nwtis</entry>
+<entry key="admin.database">nwtis_mpernar_bp_2</entry>
+<entry key="user.username">nwtis_mpernar</entry>
+<entry key="user.password">mpernar_nwtis</entry>
+<entry key="user.database">nwtis_mpernar_bp_2</entry>
+<entry key="jdbc.mysql">com.mysql.cj.jdbc.Driver</entry>
+<entry key="jdbc.derby">org.apache.derby.jdbc.ClientDriver</entry>
+<entry key="LocationIQ.token">pk.33bdcd4d0710474c6e0a425d48acd0fe</entry>
+<entry key="OpenWeatherMap.apikey">f885fa249f3f1677202d238cbf61c892</entry>
+<entry key="OpenSkyNetwork.korisnik">mpernar</entry>
+<entry key="OpenSkyNetwork.lozinka">UabPG8N3!QA6wJe</entry>
+<entry key="preuzimanje.aviona.status">true</entry>
+<entry key="preuzimanje.aviona.pocetak">01.01.2021</entry>
+<entry key="preuzimanje.aviona.kraj">30.04.2021</entry>
+<entry key="preuzimanje.aviona.ciklus">200</entry>
+<entry key="preuzimanje.aviona.pauza">1000</entry>
+<entry key="preuzimanje.meteo.status">true</entry>
+<entry key="preuzimanje.meteo.ciklus">600</entry>
+<entry key="preuzimanje.meteo.pauza">1000</entry>
+<entry key="server.podataka.adresa">localhost</entry>
+<entry key="server.podataka.port">8000</entry>
+</properties>
